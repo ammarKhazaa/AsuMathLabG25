@@ -3,10 +3,14 @@
 Implementing a mathematical library software. Similar to Matlab, Octave and similar tools.
 
 # Specifications
-● Using C/C++
-● Development under linux
+● Using C/C++ .
+
+● Development under linux .
+
 ● Production to linux server (Centos 6.7)
+
 ● Provide correct result identical to Matlab or Octave.
+
 ● g++ compiler.
 
 
@@ -17,8 +21,11 @@ Implementing a mathematical library software. Similar to Matlab, Octave and simi
 
 # Phase 1: Core Operations
 ● Support dynamic creation and destruction of matrices of any size.
+
 ● Support addition, subtraction, multiplication, transpose and division.
+
 ● Process input user commands and show results directly.
+
 ● Process input file, show each step result then exit.
 
 
@@ -40,12 +47,20 @@ Implementing a mathematical library software. Similar to Matlab, Octave and simi
 
 # Phase 2: Advanced Operations and Tuning
 ● Support mathematical functions.
+
 ● Trigonometric, Logarithmic, Roots, Power
+
 ● Support mathematical expressions.
+
 ● Either with (dot) or not.
+
 ● Support flexible matrix parser.
+
+
 ● Accept matrix in matrix, expressions and variables
+
 ● Support error handling.
+
 ● Do not crash for invalid input.
 
 
