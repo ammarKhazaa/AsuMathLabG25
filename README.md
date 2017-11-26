@@ -64,7 +64,7 @@ Implementing a mathematical library software. Similar to Matlab, Octave and simi
 ● Do not crash for invalid input.
 
 
-Phase 2: sample of handeled input
+# Phase 2: sample of handeled input
 > A = 5.5 + 12 * sin(0.4) + 2.2^4;
 
 > B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]];
