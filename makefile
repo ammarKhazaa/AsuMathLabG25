@@ -7,7 +7,7 @@ main.o: main.cpp
         g++ main.cpp -c
 
 matrix.o: matrix.cpp
-          g++ matrix.cpp -c
+        g++ matrix.cpp -c
 
 clean:
         rm *.o matrix
