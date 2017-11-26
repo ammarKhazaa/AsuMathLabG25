@@ -1,62 +1,28 @@
 # AsuMathLabG25
 # Intro
-Mathlab is a C++ library software similar to MATLAB
+Implementing a mathematical library software. Similar to Matlab, Octave and similar tools.
+
 # Specifications
-
 ● Using C/C++
-
 ● Development under linux
-
 ● Production to linux server (Centos 6.7)
-
-● Any C/C++ IDE works under linux.
-
-● g++ compiler, makefile is required.
-
-● Source Control, Issue Tracking, Documents at Bitbucket
-
-# Phases
-1. Core operations (3 Weeks)
-2. Advanced Operations and Tuning (3 Weeks)
-3. Advanced system operations (4 Weeks after exams)
-
-# Phase 1: Core Operations
-● Implement C++ class for matrix
-
-● Support dynamic creation and destruction of matrices of any size
-
-● Support addition, subtraction, multiplication, transpose and division
-
-● Process input user commands and show results directly
-
-● Process input file, show each step result then exit
-
-Acceptance Conditions:
-
-● Delivered at provided server.
-
 ● Provide correct result identical to Matlab or Octave.
-
-Competition:
-
-● Fastest response time for large inputs.
+● g++ compiler.
 
 
-# Phase 1: Process
-● Study requirements (from Matlab docs)
-
-● Implement the code
-
-● Apply system test
-
-● Upload code to production server
-
-● Cross group testing
-
-● Acceptance test and results
-
+# Project Phases
+1. Core operations
+2. Advanced Operations and Tuning
+3. Advanced system operations
 
 # Phase 1: Core Operations
+● Support dynamic creation and destruction of matrices of any size.
+● Support addition, subtraction, multiplication, transpose and division.
+● Process input user commands and show results directly.
+● Process input file, show each step result then exit.
+
+
+# Phase 1: sample of handeled input
 > A = [1.4 2.2 3.2; 4.4 5.4 6.4; 3.3 4.2 2.2];
 
 > B = [1.5 4.1 5.4; 3.1 4.2 1.2; 3.2 4.3 2.2];
@@ -74,29 +40,34 @@ Competition:
 
 # Phase 2: Advanced Operations and Tuning
 ● Support mathematical functions.
-
-○ Trigonometric, Logarithmic, Roots, Power
-
+● Trigonometric, Logarithmic, Roots, Power
 ● Support mathematical expressions.
-
-○ Either with (dot) or not.
-
+● Either with (dot) or not.
 ● Support flexible matrix parser.
-
-○ Accept matrix in matrix, expressions and variables
-
+● Accept matrix in matrix, expressions and variables
 ● Support error handling.
+● Do not crash for invalid input.
 
-○ Do not crash for invalid input.
 
-Acceptance Conditions:
+Phase 2: sample of handeled input
+> A = 5.5 + 12 * sin(0.4) + 2.2^4;
 
-● Delivered at provided server.
+> B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]];
 
-● Provide correct result identical to Matlab or Octave.
+> C = [[B [3.4; 2.1; 3.5+9.1]]
+     1.2^3 3+1.2 15/(2.1+10*sin(0.12))  1.2]
+     
+> D = rand(4,4)
 
-Competition:
+> E = eye(4, 4)
 
-● Fastest response time for large inputs.
+> F = zeros(2, 3)
 
-● How many mathematical operations supported.
+> G = ones(3, 6)
+
+> L = (1.2 + 3.4 - 5.6)/(2.1*3.2 + 4.6) - 12.1*3.1 + (1.2 + 5.2)^(4/(3.2+5.6))
+
+> X = ((C*D .+ 4)./2.1 + sqrt(D))./C.^2
+
+> Y = (C^3 * sin(1./D))^(0.1)
+
