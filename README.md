@@ -29,7 +29,7 @@ Implementing a mathematical library software. Similar to Matlab, Octave and simi
 ● Process input file, show each step result then exit.
 
 
-# Phase 1: sample of handeled input
+# Phase 1: sample of handled input
 > A = [1.4 2.2 3.2; 4.4 5.4 6.4; 3.3 4.2 2.2];
 
 > B = [1.5 4.1 5.4; 3.1 4.2 1.2; 3.2 4.3 2.2];
@@ -64,7 +64,7 @@ Implementing a mathematical library software. Similar to Matlab, Octave and simi
 ● Do not crash for invalid input.
 
 
-# Phase 2: sample of handeled input
+# Phase 2: sample of handled input
 > A = 5.5 + 12 * sin(0.4) + 2.2^4;
 
 > B = [1.2 2.3 A;[1.3 2.4;4.6 1.3],[3.2;7.8]];
