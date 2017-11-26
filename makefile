@@ -10,4 +10,4 @@ matrix.o: matrix.cpp
         g++ matrix.cpp -c
 
 clean:
-        rm *.o matrix
+        rm matrix
