@@ -4,10 +4,15 @@ Mathlab is a C++ library software similar to MATLAB
 # Specifications
 
 ● Using C/C++
+
 ● Development under linux
+
 ● Production to linux server (Centos 6.7)
+
 ● Any C/C++ IDE works under linux.
+
 ● g++ compiler, makefile is required.
+
 ● Source Control, Issue Tracking, Documents at Bitbucket
 
 # Phases
