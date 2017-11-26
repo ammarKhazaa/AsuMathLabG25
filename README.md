@@ -90,9 +90,11 @@ Competition:
 ○ Do not crash for invalid input.
 
 Acceptance Conditions:
+
 ● Delivered at provided server.
 
 ● Provide correct result identical to Matlab or Octave.
+
 Competition:
 
 ● Fastest response time for large inputs.
