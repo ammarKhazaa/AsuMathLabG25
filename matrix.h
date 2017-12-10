@@ -77,8 +77,8 @@ class CMatrix
 
     //basel
     // takes a CMatrix object (call CMatrix (double ) if oprand is a const) to operate on and a string containing the trig func
-    CMatrix getTrigFunc(CMatrix& oprand, string func); 
-    Cmatrix elementWisePowerScaler (CMatrix& oprand ,double exponant);  
-    Cmatrix elementWisePower (CMatrix& oprand1 ,CMatrix& oprand1);  
+    static CMatrix getTrigFunc(CMatrix& oprand, string func); 
+    static Cmatrix elementWisePowerScaler (CMatrix& oprand ,double exponant);  
+    static Cmatrix elementWisePower (CMatrix& oprand1 ,CMatrix& oprand1);  
 };
 #endif
