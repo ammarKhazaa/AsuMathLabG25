@@ -4,15 +4,18 @@
 #ifndef matrix_h
 #define matrix_h
 
+#include "math.h"
 #include <iostream>
 #include "string"
 using namespace std;
 
-class CMatrix{int nR, nC ;
-
-    
+class CMatrix
+{
+    int nR, nC ;
     double** values;
-    public:CMatrix();
+	
+    public:
+     CMatrix();
     ~CMatrix();
     enum MI{MI_ZEROS, MI_ONES, MI_EYE, MI_RAND, MI_VALUE};
     CMatrix(int nR, int nC, int initialization = MI_ZEROS, double initializationValue = 0.0);
@@ -70,6 +73,12 @@ class CMatrix{int nR, nC ;
     double getDeterminant();
     CMatrix getTranspose();
     CMatrix getInverse();
-	void parseMatrix(string s);
+    void parseMatrix(string s);
+
+    //basel
+    // takes a CMatrix object (call CMatrix (double ) if oprand is a const) to operate on and a string containing the trig func
+    CMatrix getTrigFunc(CMatrix& oprand, string func); 
+    Cmatrix elementWisePowerScaler (CMatrix& oprand ,double exponant);  
+    Cmatrix elementWisePower (CMatrix& oprand1 ,CMatrix& oprand1);  
 };
 #endif
