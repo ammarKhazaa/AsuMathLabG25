@@ -294,13 +294,13 @@ CMatrix CMatrix::operator+(double d)
 
 void CMatrix::mul(CMatrix& m)
 {
-    if(nR!=m.nR||nC!=m.nC)throw("Invalid matrix dimension");
+    if(nC!=m.nR)throw("Invalid matrix dimension");
     CMatrix r(nR, m.nC);
     for(int iR=0; iR<r.nR; iR++)
         for(int iC=0; iC<r.nC; iC++)
         {
             r.values[iR][iC] = 0;
-            for(int k=0; k<m.nC; k++)
+            for(int k=0; k<nC; k++)
                 r.values[iR][iC] += values[iR][k]*m.values[k][iC];
         }
     copy(r);
@@ -313,7 +313,7 @@ void CMatrix::operator*=(double d)
 {
     for(int iR=0; iR<nR; iR++)
         for(int iC=0; iC<nC; iC++)
-            values[iR][iC] *= 9;
+            values[iR][iC] *= d;
 }
 CMatrix CMatrix::operator*(CMatrix& m)
 {
@@ -565,3 +565,94 @@ ostream& operator << (ostream &os, CMatrix& m)
     os<<m.getString();
     return os;
 }
+
+
+//unfinished
+CMatrix CMatrix::getTrigFunc(CMatrix& oprand, string func)
+{
+	CMatrix result (oprand.nR, oprand.nC);
+	
+	switch (func)
+	{
+		case "sin" :
+			{
+				for (int i=0 ; i<oprand.nR ; i++)
+				{
+					for (int j=0 ;j<oprand.nC ; j++)
+					{
+						result.values[i][j]= sin (oprand.values[i][j]);
+					}
+					break ;
+				}
+			}
+		
+		case "cos" :
+			{
+				for (int i=0 ; i<oprand.nR ; i++)
+				{
+					for (int j=0 ;j<oprand.nC ; j++)
+					{
+						result.values[i][j]= cos (oprand.values[i][j]);
+					}
+					break ;
+				}
+			}
+		case "tan" :
+			{
+				for (int i=0 ; i<oprand.nR ; i++)
+				{
+					for (int j=0 ;j<oprand.nC ; j++)
+					{
+						
+						result.values[i][j]= tan (oprand.values[i][j]);
+					}
+					break ;
+				}
+			}
+	
+	
+	}
+					
+        }
+	return result ;
+	
+}
+
+
+Cmatrix CMatrix::elementWisePowerScaler (CMatrix& oprand ,double exponant)
+{
+	CMatrix result (oprand.nR, oprand.nC);
+	for (int i=0 ; i<oprand.nR ; i++)
+	{
+		for (int j=0 ;j<oprand.nC ; j++)
+		{
+			result.values[i][j]=pow(oprand.values[i][j],exponant);
+		}
+	}
+	return result ;
+			
+}
+
+
+ Cmatrix CMatrix::elementWisePower (CMatrix& oprand1 ,CMatrix& oprand1)
+ {
+	if((oprand1.nR==oprand2.nR)&&(oprand1.nC==oprand2.nC))
+	{
+		CMatrix result (oprand1.nR, oprand1.nC);
+		for (int i=0 ; i<oprand.nR ; i++)
+		{
+			for (int j=0 ;j<oprand.nC ; j++)
+			{
+				result.values[i][j]=pow(oprand1.values[i][j],oprand2.values[i][j]);
+			}
+		}
+		return result ;
+	}
+	 else 
+		 throw ("The two matrices must be of equal dimentions");
+	
+			
+}
+
+
+
