@@ -619,7 +619,7 @@ CMatrix CMatrix::getTrigFunc(CMatrix& oprand, string func)
 }
 
 
-Cmatrix CMatrix::elementWisePowerScaler (CMatrix& oprand ,double exponant)
+CMatrix CMatrix::elementWisePowerScaler (CMatrix& oprand ,double exponant)
 {
 	CMatrix result (oprand.nR, oprand.nC);
 	for (int i=0 ; i<oprand.nR ; i++)
@@ -634,7 +634,7 @@ Cmatrix CMatrix::elementWisePowerScaler (CMatrix& oprand ,double exponant)
 }
 
 
- Cmatrix CMatrix::elementWisePower (CMatrix& oprand1 ,CMatrix& oprand1)
+ CMatrix CMatrix::elementWisePower (CMatrix& oprand1 ,CMatrix& oprand2)
  {
 	if((oprand1.nR==oprand2.nR)&&(oprand1.nC==oprand2.nC))
 	{
@@ -653,6 +653,38 @@ Cmatrix CMatrix::elementWisePowerScaler (CMatrix& oprand ,double exponant)
 	
 			
 }
+
+CMatrix CMatrix::matrixPower (CMatrix& oprand ,int exponant)
+{
+	CMatrix result = oprand;
+	CMatrix temp = oprand;
+	
+	for (int i=0;i<(exponant-1);i++)
+		result*=temp;
+	
+	return result;
+	
+}
+
+CMatrix CMatrix::safeSquareRoot (CMatrix& oprand)
+{
+	CMatrix result (oprand1.nR, oprand1.nC);
+	for(int i=0;i<oprand.nR;i++)
+	{
+		for(int j =0 ;j<oprand.nC;j++)
+		{
+			if (oprand[i][j]<0)
+			{
+				throw ("complex values are not supported");
+				break;
+			}
+			else
+				result [i][j]=sqrt (oprand [i][j]);
+		}
+	}
+	return result ;
+}
+				
 
 
 
