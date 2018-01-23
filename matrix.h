@@ -76,9 +76,12 @@ class CMatrix
     void parseMatrix(string s);
 
     //basel
-    // takes a CMatrix object (call CMatrix (double ) if oprand is a const) to operate on and a string containing the trig func
+    
     static CMatrix getTrigFunc(CMatrix& oprand, string func); 
     static Cmatrix elementWisePowerScaler (CMatrix& oprand ,double exponant);  
-    static Cmatrix elementWisePower (CMatrix& oprand1 ,CMatrix& oprand1);  
+    static Cmatrix elementWisePower (CMatrix& oprand1 ,CMatrix& oprand2);
+    static Cmatrix matrixPower (CMatrix& oprand ,int exponant);
+    static Cmatrix safeSquareRoot (CMatrix& oprand);
+    
 };
 #endif
