@@ -565,3 +565,64 @@ ostream& operator << (ostream &os, CMatrix& m)
     os<<m.getString();
     return os;
 }
+//-----------------DOT MUL-------------------//
+			void CMatrix::mul2(CMatrix& m)
+			{
+				if (nR != m.nR || nC != m.nC)throw("Invalid matrix dimension");
+				CMatrix r(nR, m.nC);
+				for (int iR = 0; iR<r.nR; iR++)
+				for (int iC = 0; iC<r.nC; iC++)
+				{
+					
+					r.values[iR][iC] = values[iR][iC] * m.values[iR][iC];
+				
+				}
+				copy(r);
+			}
+			void CMatrix::dotProductE(CMatrix& m)
+			{
+				mul2(m);
+			}
+			CMatrix CMatrix::dotProduct(CMatrix& m)
+			{
+				CMatrix r = *this; r.dotProductE(m); return r;
+			}
+			
+//-------------------Dot Add--------------//
+			void CMatrix::add2(CMatrix& m)
+			{
+				if (nR != m.nR || nC != m.nC)throw("Invalid matrix dimension");
+				for (int iR = 0; iR<nR; iR++)
+				for (int iC = 0; iC<nC; iC++)values[iR][iC] += m.values[iR][iC];
+			}
+			void CMatrix::dotAddE(CMatrix& m)
+			{ add2(m); }
+			
+			CMatrix CMatrix::dotAdd(CMatrix& m)
+			{ CMatrix r = *this; r.dotAddE(m); return r; }
+			
+
+//-----------------------DOT SUB---------//
+			
+			void CMatrix::sub2(CMatrix& m)
+			{
+				if (nR != m.nR || nC != m.nC)throw("Invalid matrix dimension");
+				for (int iR = 0; iR<nR; iR++)
+				for (int iC = 0; iC<nC; iC++)values[iR][iC] -= m.values[iR][iC];
+			}
+			void CMatrix::dotSubE(CMatrix& m)
+			{
+				sub2(m);
+			}
+
+			CMatrix CMatrix::dotSub(CMatrix& m)
+			{
+				CMatrix r = *this; r.dotSubE(m); return r;
+			}
+
+
+			
+
+//-------------------------------------//
+
+}
