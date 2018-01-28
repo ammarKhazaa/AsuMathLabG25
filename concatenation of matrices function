@@ -1,0 +1,122 @@
+			
+#include "matrix.h"
+#include <stdio.h>
+#include "math.h"
+#include <stdlib.h>
+#include <stdarg.h>
+#include <string>
+#include <cstring>
+#include <stdio.h>
+#include <algorithm>
+#include <fstream>
+
+using namespace std;
+
+ void concatMatrix (string s)
+ {
+			
+			string matrix [10][10] ;
+
+			for (int i=0;i<10; i++)
+      {
+				for(int j=0 ; j<10 ;j++)
+        {
+					matrix [i][j]="";
+				}
+			}
+
+		
+
+			int numberOfMatrices=0 ,temp;
+			int numberOfCurrentWorkingMatrix = -1;
+			int numberOfMatricesWeStartedToParse = -1;
+			for (int i=0 ;i<s.length() ; i++)
+			{
+				if (s[i]=='[')
+				{
+					numberOfMatrices++;
+				}
+
+			}
+
+			int* columni, *rowi, *nRows, *nColumns, *parent;
+			columni= new int[numberOfMatrices];
+			rowi= new int[numberOfMatrices];
+			nRows=new int[numberOfMatrices];
+			nColumns=new int[numberOfMatrices];
+			parent=new int[numberOfMatrices];
+
+			for (int i = 0; i < numberOfMatrices; i++) 
+      {
+				columni[i]=0;
+        rowi[i]=0;
+        nRows[i]=0;
+        nColumns[i]=0;
+        parent[i];
+			}
+
+			for (int i=0 ; i<s.length() ; i++)
+			{
+				if (s[i]=='[')
+				{
+					temp = numberOfCurrentWorkingMatrix;
+					numberOfMatricesWeStartedToParse++;
+					numberOfCurrentWorkingMatrix = numberOfMatricesWeStartedToParse;
+					parent[numberOfCurrentWorkingMatrix] = temp;
+					columni[numberOfCurrentWorkingMatrix] = columni[parent[numberOfCurrentWorkingMatrix]];
+					rowi[numberOfCurrentWorkingMatrix] = rowi[parent[numberOfCurrentWorkingMatrix]];
+					
+				}
+
+				if (s[i] == ']')
+				{
+
+					if (parent[numberOfCurrentWorkingMatrix] == -1){break;}
+					columni[parent[numberOfCurrentWorkingMatrix]] += nColumns[numberOfCurrentWorkingMatrix];
+					if (nRows[parent[numberOfCurrentWorkingMatrix]]<nRows[numberOfCurrentWorkingMatrix]+rowi[parent[numberOfCurrentWorkingMatrix]])nRows[parent[numberOfCurrentWorkingMatrix]] += nRows[numberOfCurrentWorkingMatrix];
+					numberOfCurrentWorkingMatrix = parent[numberOfCurrentWorkingMatrix];
+
+				}
+				if (s[i] == ' ' ||s[i] == ',')
+        {
+					if (matrix[rowi[numberOfCurrentWorkingMatrix]][columni[numberOfCurrentWorkingMatrix]].length() != 0)
+          {
+						columni[numberOfCurrentWorkingMatrix]++;
+						if (nColumns[numberOfCurrentWorkingMatrix] < columni[numberOfCurrentWorkingMatrix])
+						{
+								nColumns[numberOfCurrentWorkingMatrix] = columni[numberOfCurrentWorkingMatrix];
+						}
+					}
+				}
+				if (s[i] == ';')
+					{
+						nRows[numberOfCurrentWorkingMatrix]++;
+						if (numberOfCurrentWorkingMatrix != 0) columni[numberOfCurrentWorkingMatrix] = columni[parent[numberOfCurrentWorkingMatrix]];
+						else columni[numberOfCurrentWorkingMatrix] = 0;
+						if (numberOfCurrentWorkingMatrix != 0) rowi[numberOfCurrentWorkingMatrix] = nRows[numberOfCurrentWorkingMatrix] + rowi[parent[numberOfCurrentWorkingMatrix]];
+						else rowi[numberOfCurrentWorkingMatrix] = nRows[numberOfCurrentWorkingMatrix];
+					}
+				if(s[i] != ';'&&s[i] != ','&&s[i] != '['&&s[i] != ']'&&s[i] != ' ')
+				{
+					matrix[rowi[numberOfCurrentWorkingMatrix]][columni[numberOfCurrentWorkingMatrix]] += s[i];
+					
+				}
+
+			}
+			
+			for (int i=0;i<nRows[0]+1; i++)
+      {
+				for(int j=0 ; j<nColumns[0]+1; j++)
+        {
+					if (matrix [i][j]!="*")
+          {
+						cout<< matrix [i][j]<<"   ";
+					}
+			  } cout<<"\n";
+			}
+                        
+                  
+                                   
+}
+		
+
