@@ -12,18 +12,16 @@
 
 using namespace std;
 
- void concatMatrix (string s)
+ void concatMatrix (string a)
  {
-			
-			string matrix [10][10] ;
-
-			for (int i=0;i<10; i++)
-      {
-				for(int j=0 ; j<10 ;j++)
-        {
-					matrix [i][j]="";
-				}
-			}
+ string matrix [10][10] ;
+ for (int i=0;i<10; i++)
+ {
+ for(int j=0 ; j<10 ;j++)
+ {
+ matrix [i][j]="";
+ }
+ }
 
 		
 
@@ -47,12 +45,12 @@ using namespace std;
 			parent=new int[numberOfMatrices];
 
 			for (int i = 0; i < numberOfMatrices; i++) 
-      {
-				columni[i]=0;
-        rowi[i]=0;
-        nRows[i]=0;
-        nColumns[i]=0;
-        parent[i];
+			{
+			columni[i]=0;
+                        rowi[i]=0;
+                        nRows[i]=0;
+                        nColumns[i]=0;
+                        parent[i];
 			}
 
 			for (int i=0 ; i<s.length() ; i++)
@@ -78,15 +76,15 @@ using namespace std;
 
 				}
 				if (s[i] == ' ' ||s[i] == ',')
-        {
-					if (matrix[rowi[numberOfCurrentWorkingMatrix]][columni[numberOfCurrentWorkingMatrix]].length() != 0)
-          {
-						columni[numberOfCurrentWorkingMatrix]++;
-						if (nColumns[numberOfCurrentWorkingMatrix] < columni[numberOfCurrentWorkingMatrix])
-						{
-								nColumns[numberOfCurrentWorkingMatrix] = columni[numberOfCurrentWorkingMatrix];
-						}
-					}
+				{
+				if (matrix[rowi[numberOfCurrentWorkingMatrix]][columni[numberOfCurrentWorkingMatrix]].length() != 0)
+				{
+				columni[numberOfCurrentWorkingMatrix]++;
+				if (nColumns[numberOfCurrentWorkingMatrix] < columni[numberOfCurrentWorkingMatrix])
+				{
+				nColumns[numberOfCurrentWorkingMatrix] = columni[numberOfCurrentWorkingMatrix];
+				}
+				}
 				}
 				if (s[i] == ';')
 					{
@@ -105,14 +103,14 @@ using namespace std;
 			}
 			
 			for (int i=0;i<nRows[0]+1; i++)
-      {
-				for(int j=0 ; j<nColumns[0]+1; j++)
-        {
-					if (matrix [i][j]!="*")
-          {
-						cout<< matrix [i][j]<<"   ";
-					}
-			  } cout<<"\n";
+			{
+			for(int j=0 ; j<nColumns[0]+1; j++)
+			{
+			if (matrix [i][j]!="*")
+                        {
+			cout<< matrix [i][j]<<"   ";
+			}
+			} cout<<"\n";
 			}
                         
                   
