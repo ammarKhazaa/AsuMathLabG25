@@ -308,7 +308,7 @@ void CMatrix::operator*=(double d)
 {
     for(int iR=0; iR<nR; iR++)
         for(int iC=0; iC<nC; iC++)
-            values[iR][iC] *= 9;
+            values[iR][iC] *= d;
 }
 CMatrix CMatrix::operator*(CMatrix& m)
 {
@@ -477,43 +477,6 @@ double CMatrix::getDeterminant()
     return value;
 }
 
-/*
-void CMatrix::getTranspose(CMatrix m)
-{
-    
-    if(this != &m)
-    {
-        *this = m;
-    }
-    
-    for(int r = 0 ; r < nR ; r++)
-    {
-        for(int c = 0 ; c < nC ; c++)
-        {
-            this->values[r][c] = m.values[c][r];
-        }
-    }
-}
-
-void CMatrix::getInverse(CMatrix m)
-{
-    *this = m;
-    double det = this->getDeterminant();
-    if(!det) {cout<<"Invalid Matrix Operation";}
-    else {
-        double sign_correction = 1;
-        for(int i = 0 ; i < nR ; i++)
-        {
-            for(int j = 0 ; j < nC ; j++)
-            {
-                this->values[i][j] = sign_correction * m.getCofactor(i,j).getDeterminant();
-                sign_correction *= -1;
-            }
-        }
-        *this /= det;
-        this->getTranspose(*this);}
-}
- */
 
 CMatrix CMatrix::getInverse()
 {
@@ -531,7 +494,52 @@ CMatrix CMatrix::getInverse()
     
     return r;
 }
+CMatrix CMatrix::inverse(CMatrix &m){
+	CMatrix x;
+	CMatrix	w(m.nC, m.nC, MI_EYE, 0.0000);// makes an eye matrix
+	if (m.nC != m.nR)throw("invalid invesion");
+	else {
+		x = m;
+		double a;
+		double hit;
+		int cou = 1;
+		for (int i = 0; i<x.nR; i++)
+		{
+			a = x.values[i][i];
 
+			if (a == 0)throw("invalid inversion");
+			else{
+				for (int j = 0; j<x.nC; j++)
+				{
+					x.values[i][j] = x.values[i][j] / a;
+					w.values[i][j] = w.values[i][j] / a;
+				}
+
+				for (int z = 0; z<x.nR; z++)
+				{
+					if (z != i){
+						hit = x.values[z][i];
+
+						for (int c = 0; c < x.nC; c++)
+						{
+
+							x.values[z][c] = x.values[z][c] - hit*x.values[i][c];
+							w.values[z][c] = w.values[z][c] - hit*w.values[i][c];
+
+						}
+
+					}
+				}
+			}
+
+		}
+
+	}
+	cout << "right= \n\n" << x << "\n\n";
+	cout << "inverse= \n\n" << w << "\n\n";
+	return w;
+
+}
 CMatrix CMatrix::getTranspose()
 {
     CMatrix M(nC, nR);
@@ -540,11 +548,39 @@ CMatrix CMatrix::getTranspose()
             M.values[iC][iR] = values[iR][iC];
     return M;
 }
-void CMatrix::div(CMatrix& m)
-{
-    m.getInverse();
-    this->mul(m);
+//----------------------------------------------
+void CMatrix:: div(CMatrix& m){
+
+	
+	CMatrix r = *this,temp,k;
+	k = inverse(m);
+	temp =r * k;
+	*this= temp;
 }
+
+void CMatrix::operator/=(CMatrix& m)
+{
+	div(m);
+}
+void CMatrix::operator/=(double d)
+{
+	for(int iR = 0; iR<nR; iR++)
+		for(int iC = 0; iR<nC; iC++)
+		values[iR][iC] /= d;
+}
+CMatrix CMatrix::operator/(CMatrix& m)
+{
+	CMatrix r = *this;
+	r /= m;
+	return r;
+}
+CMatrix CMatrix::operator/(double d)
+{
+	CMatrix r = *this;
+	r /= d;
+	return r;
+}
+//--------------------------------
 
 
 istream& operator >> (istream &is, CMatrix& m)
