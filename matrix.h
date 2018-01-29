@@ -48,6 +48,15 @@ class CMatrix{int nR, nC ;
     void operator/=(double d);
     CMatrix operator/(CMatrix& m);
     CMatrix operator/(double d);
+    void dotSubE(CMatrix& m);
+    CMatrix dotSub(CMatrix& m);
+    void sub2(CMatrix& m);
+    void dotAddE(CMatrix& m);
+    CMatrix dotAdd(CMatrix& m);
+    void add2(CMatrix& m);
+    void dotProductE(CMatrix& m);
+    CMatrix dotProduct(CMatrix& m);
+    void mul2(CMatrix& m);
     CMatrix operator++(); //Pre Increment
     CMatrix operator++(int); //Post Increment, int is not used
     CMatrix operator--(); //Pre Increment
@@ -70,6 +79,7 @@ class CMatrix{int nR, nC ;
     double getDeterminant();
     CMatrix getTranspose();
     CMatrix getInverse();
+    CMatrix inverse(CMatrix &m);
 	void parseMatrix(string s);
 };
 #endif
