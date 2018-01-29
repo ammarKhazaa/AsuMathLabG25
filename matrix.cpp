@@ -209,12 +209,7 @@ void CMatrix::copy(string s)
         for (iC = 0; iC < nC; iC++)
             values[iR][iC] = atof(sValues[iR][iC].c_str());
     }
-    /*cout << nR << "*" << nC << endl;
-    for (iR = 0; iR < nR; iR++) {
-    	for (iC = 0; iC < nC; iC++)
-    		cout << sValues[iR][iC] << " ";
-    	cout << endl;
-    }*/
+    
 }
 
 
